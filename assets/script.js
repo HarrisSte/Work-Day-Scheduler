@@ -1,3 +1,16 @@
+//Variables for application
+var saveBtn = $(".saveBtn");
+var currentHour = moment().format("HH");
+var currentHourInt = parseInt(currentHour);
+
+//Date and time
+$("#currentDay").append();
+
+function addDate() {
+  $("#currentDay").html(moment().format("MMMM Do YYYY, h:mm:ss a"));
+}
+setInterval(addDate, 1000);
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
