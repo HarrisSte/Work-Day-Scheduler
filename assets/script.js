@@ -3,6 +3,9 @@ var saveBtn = $(".saveBtn");
 var currentDay = $("#currentDay");
 var currentHourInt = $(currentDay);
 
+$(document).ready (function () {
+  renderPlans();
+})
 //Date and time with seconds counting down
 function displayTime() {
   var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
@@ -12,6 +15,7 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
+//Data attributes to allow time slots to change color based on past, present, furture
 $("#hour-9").attr("data-time", dayjs("9:00 am", "h:mm a").format("HH MM"));
 $("#hour-10").attr("data-time", dayjs("10:00 am", "hh:mm a").format("HH"));
 $("#hour-11").attr("data-time", dayjs("11:00 am", "hh:mm a").format("HH"));
@@ -21,6 +25,8 @@ $("hour-2").attr("data-time", dayjs("2:00 pm", "h:mm a").format("HH"));
 $("#hour-3").attr("data-time", dayjs("3:00 pm", "h:mm a").format("HH"));
 $("#hour-4").attr("data-time", dayjs("4:00 pm", "h:mm a").format("HH"));
 $("#hour-5").attr("data-time", dayjs("5:00 pm", "h:mm a").format("HH"));
+
+
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -42,15 +48,15 @@ $("#hour-5").attr("data-time", dayjs("5:00 pm", "h:mm a").format("HH"));
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   for (var i = 0; i <= 12; i++) {
-    var inputHourInt = $("#" + i + "time-row").attr("data-time");
+    var inputHourInt = $("#" + i + "row").attr("data-time");
 
     if (currentHourInt === inputHourInt) {
-      $("#" + i + "time-row").addClass("present");
+      $("#" + i + "row").addClass("present");
     if (currentHourInt > inputHourInt) {
-      $("#" + i + "time-row").addClass("past");
+      $("#" + i + "row").addClass("past");
     }
     if (currentHourInt < inputHourInt) {
-      $("#" + i + "time-row").addClass("future");
+      $("#" + i + "row").addClass("future");
     }
   }}
   //
