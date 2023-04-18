@@ -3,9 +3,9 @@ var saveBtn = $(".saveBtn");
 var currentDay = $("#currentDay");
 var currentHourInt = $(currentDay);
 
-//Date and time
+//Date and time with seconds counting down
 function displayTime() {
-  var rightNow = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
+  var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
   currentDay.text(rightNow);
 }
 
