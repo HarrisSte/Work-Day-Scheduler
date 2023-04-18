@@ -1,15 +1,12 @@
 //Variables for application
 var saveBtn = $(".saveBtn");
-var currentHour = moment().format("HH");
-var currentHourInt = parseInt(currentHour);
+var currentDay = $("#time-display");
 
 //Date and time
-$("#currentDay").append();
-
-function addDate() {
-  $("#currentDay").html(moment().format("MMMM Do YYYY, h:mm:ss a"));
+function displayTime() {
+  var rightNow = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
+  currentDay.text(rightNow);
 }
-setInterval(addDate, 1000);
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
