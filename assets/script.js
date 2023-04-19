@@ -3,7 +3,7 @@ var currentDay = $("#currentDay");
 var saveBtn = $(".saveBtn");
 var tasks = $(tasks);
 var hour = dayjs().hour();
-// var currentHourInt = parseInt(currentHourInt);
+
 
 function readTasksFromLocal() {
   var tasks = localStorage.getItem("tasks");
@@ -23,16 +23,20 @@ function printTaskData() {
   taskDisplay.empty();
 }
 
-//Data attributes to allow time slots to change color based on past, present, furture
-// $("#hour-9").attr("data-time", dayjs("9:00 am", "h:mm a"));
-// $("#hour-10").attr("data-time", dayjs("10:00 am", "hh:mm a").format("HH"));
-// $("#hour-11").attr("data-time", dayjs("11:00 am", "hh:mm a").format("HH"));
-// $("#hour-12").attr("data-time", dayjs("12:00 pm", "hh:mm a").format("HH"));
-// $("#hour-1").attr("data-time", dayjs("1:00 pm", "h:mm a").format("HH"));
-// $("hour-2").attr("data-time", dayjs("2:00 pm", "h:mm a").format("HH"));
-// $("#hour-3").attr("data-time", dayjs("3:00 pm", "h:mm a").format("HH"));
-// $("#hour-4").attr("data-time", dayjs("4:00 pm", "h:mm a").format("HH"));
-// $("#hour-5").attr("data-time", dayjs("5:00 pm", "h:mm a").format("HH"));
+//Data attributes to allow time slots to change color based on past, present, future
+for (var i = 9; i <= 17; i++) {
+  var textArea = $("#hour-" + i);
+
+  if (hour === i) {
+    textArea.addClass("present");
+  }
+  if (hour < i) {
+    textArea.addClass("past");
+  }
+  if (hour > i) {
+    textArea.addClass("future");
+  }
+}
 
 // $(document).ready (function () {
 //   renderTasks();
@@ -67,19 +71,6 @@ function assignTask(event) {
 // attribute of each time-block be used to conditionally add or remove the
 // past, present, and future classes? How can Day.js be used to get the
 // current hour in 24-hour time?
-for (var i = 9; i <= 17; i++) {
-  var textArea = $("#hour-" + i);
-
-  if (hour === i) {
-    textArea.addClass("present");
-  }
-  if (hour < i) {
-    textArea.addClass("past");
-  }
-  if (hour > i) {
-    textArea.addClass("future");
-  }
-}
 
 //
 // TODO: Add code to get any user input that was saved in localStorage and set
