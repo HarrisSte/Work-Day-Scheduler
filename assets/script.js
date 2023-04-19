@@ -1,8 +1,10 @@
 //Variables for application
 var currentDay = $("#currentDay");
 var saveBtn = $(".saveBtn");
-var task = $(task);
+var readTask = $(readTask);
 var hour = dayjs().hour();
+
+//NOT DONE: Add jQuery according to instructions
 
 //ALL GOOD: Date and time with seconds counting down
 function displayTime() {
@@ -13,31 +15,29 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
-//Add EventListener to the save button to store to local
+//NOT GOOD: Add EventListener to the save button to store to local: ReadTask not defined
+saveBtn.on("click", function () {
+  var taskInput = taskInput;
+});
 
-saveBtn.on("click", function() {
-  var task = taskInput.value
-})
-
-//Pull stored data from local storage & render it on the application
-function saveTasksToLocal(taskInput) {
-  localStorage.setItem("task", JSON.stringify(taskInput));
-}
-// console.log(tasks)
-function printTaskData() {
-}
-
-function readTaskFromLocal() {
+//NOT GOOD: Pull stored data from local storage & render it on the application
+function readTask() {
   var task = localStorage.getItem("task");
   if (task) {
     task = JSON.parse(task);
   } else {
     task = [];
   }
-  return task;
+  return task.textValue;
 }
 
-//ALLGOOD: Data attributes to allow time slots to change color based on past, present, future
+function saveTask(task) {
+  localStorage.setItem("task", JSON.stringify(task));
+}
+
+function printTask() {} //Add something here?
+
+//ALL GOOD: Data attributes to allow time slots to change color based on past, present, future
 for (var i = 9; i <= 17; i++) {
   var textArea = $("#hour-" + i);
 
@@ -52,10 +52,13 @@ for (var i = 9; i <= 17; i++) {
   }
 }
 
-//Prevent the page from reloading
-function assignTask(event) {
-  event.preventDefault();
-}
+//NOT DONE: Prevent the page from reloading
+// function assignTask(event) {
+//   event.preventDefault();
+// }
+
+
+
 
 //INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
