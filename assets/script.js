@@ -4,6 +4,23 @@ var saveBtn = $(".saveBtn");
 var tasks = $(tasks);
 var hour = dayjs().hour();
 
+//Date and time with seconds counting down
+function displayTime() {
+  var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
+  currentDay.text(rightNow);
+}
+
+displayTime();
+setInterval(displayTime, 1000);
+
+//Pull stored data from local storage & render it on the application
+function saveTasksToLocal(tasks) {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function printTaskData() {
+  taskDisplay.empty();
+}
 
 function readTasksFromLocal() {
   var tasks = localStorage.getItem("tasks");
@@ -14,15 +31,6 @@ function readTasksFromLocal() {
   }
   return tasks;
 }
-//Try to get this to store to local and work
-function saveTasksToLocal(tasks) {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-function printTaskData() {
-  taskDisplay.empty();
-}
-
 //Data attributes to allow time slots to change color based on past, present, future
 for (var i = 9; i <= 17; i++) {
   var textArea = $("#hour-" + i);
@@ -38,18 +46,12 @@ for (var i = 9; i <= 17; i++) {
   }
 }
 
-// $(document).ready (function () {
-//   renderTasks();
-// })
-
-//Date and time with seconds counting down
-function displayTime() {
-  var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
-  currentDay.text(rightNow);
+//Prevent the page from reloading
+function assignTask(event) {
+  event.preventDefault();
 }
 
-displayTime();
-setInterval(displayTime, 1000);
+//INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -61,10 +63,6 @@ setInterval(displayTime, 1000);
 // function? How can DOM traversal be used to get the "hour-x" id of the
 // time-block containing the button that was clicked? How might the id be
 // useful when saving the description in local storage?
-
-function assignTask(event) {
-  event.preventDefault();
-}
 
 // TODO: Add code to apply the past, present, or future class to each time
 // block by comparing the id to the current hour. HINTS: How can the id
