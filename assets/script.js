@@ -1,7 +1,7 @@
 //Variables for application
 var currentDay = $("#currentDay");
 var saveBtn = $(".saveBtn");
-var tasks = $(tasks);
+var task = $(task);
 var hour = dayjs().hour();
 
 //ALL GOOD: Date and time with seconds counting down
@@ -14,28 +14,27 @@ displayTime();
 setInterval(displayTime, 1000);
 
 //Add EventListener to the save button to store to local
-// saveBtn.addEventListener("click", function() {
-//   var tasks = taskInput.value
-//   saveTasksToLocal(tasks)
-// })
+
+saveBtn.on("click", function() {
+  var task = taskInput.value
+})
 
 //Pull stored data from local storage & render it on the application
-function saveTasksToLocal(tasks) {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+function saveTasksToLocal(taskInput) {
+  localStorage.setItem("task", JSON.stringify(taskInput));
 }
-
+// console.log(tasks)
 function printTaskData() {
-  taskDisplay.empty();
 }
 
-function readTasksFromLocal() {
-  var tasks = localStorage.getItem("tasks");
-  if (tasks) {
-    tasks = JSON.parse(tasks);
+function readTaskFromLocal() {
+  var task = localStorage.getItem("task");
+  if (task) {
+    task = JSON.parse(task);
   } else {
-    tasks = [];
+    task = [];
   }
-  return tasks;
+  return task;
 }
 
 //ALLGOOD: Data attributes to allow time slots to change color based on past, present, future
@@ -71,13 +70,6 @@ function assignTask(event) {
 // time-block containing the button that was clicked? How might the id be
 // useful when saving the description in local storage?
 
-// TODO: Add code to apply the past, present, or future class to each time
-// block by comparing the id to the current hour. HINTS: How can the id
-// attribute of each time-block be used to conditionally add or remove the
-// past, present, and future classes? How can Day.js be used to get the
-// current hour in 24-hour time?
-
-//
 // TODO: Add code to get any user input that was saved in localStorage and set
 // the values of the corresponding textarea elements. HINT: How can the id
 // attribute of each time-block be used to do this?
