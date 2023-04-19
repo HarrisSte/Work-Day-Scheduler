@@ -4,7 +4,7 @@ var saveBtn = $(".saveBtn");
 var tasks = $(tasks);
 var hour = dayjs().hour();
 
-//Date and time with seconds counting down
+//ALL GOOD: Date and time with seconds counting down
 function displayTime() {
   var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
   currentDay.text(rightNow);
@@ -13,10 +13,14 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
+
+
 //Add EventListener to the save button to store to local
 saveBtn.addEventListener("click", funtion()) {
-  
+
 }
+
+
 
 //Pull stored data from local storage & render it on the application
 function saveTasksToLocal(tasks) {
@@ -37,7 +41,7 @@ function readTasksFromLocal() {
   return tasks;
 }
 
-//Data attributes to allow time slots to change color based on past, present, future
+//ALLGOOD: Data attributes to allow time slots to change color based on past, present, future
 for (var i = 9; i <= 17; i++) {
   var textArea = $("#hour-" + i);
 
