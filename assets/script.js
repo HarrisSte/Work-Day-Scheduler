@@ -1,21 +1,22 @@
 //Variables for application
 var currentDay = $("#currentDay");
 var saveBtn = $(".saveBtn");
-var taskDisplayEl = $(task)
+var tasks = $(tasks);
+var hour = dayjs().hour();
 // var currentHourInt = parseInt(currentHourInt);
 
 function readTasksFromLocal() {
   var tasks = localStorage.getItem("tasks");
-  if(tasks) {
+  if (tasks) {
     tasks = JSON.parse(tasks);
   } else {
     tasks = [];
   }
   return tasks;
 }
-
+//Try to get this to store to local and work
 function saveTasksToLocal(tasks) {
-  localStorage.setItem('tasks',JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function printTaskData() {
@@ -23,19 +24,19 @@ function printTaskData() {
 }
 
 //Data attributes to allow time slots to change color based on past, present, furture
-$("#hour-9").attr("data-time", dayjs("9:00 am", "h:mm a"));
-$("#hour-10").attr("data-time", dayjs("10:00 am", "hh:mm a").format("HH"));
-$("#hour-11").attr("data-time", dayjs("11:00 am", "hh:mm a").format("HH"));
-$("#hour-12").attr("data-time", dayjs("12:00 pm", "hh:mm a").format("HH"));
-$("#hour-1").attr("data-time", dayjs("1:00 pm", "h:mm a").format("HH"));
-$("hour-2").attr("data-time", dayjs("2:00 pm", "h:mm a").format("HH"));
-$("#hour-3").attr("data-time", dayjs("3:00 pm", "h:mm a").format("HH"));
-$("#hour-4").attr("data-time", dayjs("4:00 pm", "h:mm a").format("HH"));
-$("#hour-5").attr("data-time", dayjs("5:00 pm", "h:mm a").format("HH"));
+// $("#hour-9").attr("data-time", dayjs("9:00 am", "h:mm a"));
+// $("#hour-10").attr("data-time", dayjs("10:00 am", "hh:mm a").format("HH"));
+// $("#hour-11").attr("data-time", dayjs("11:00 am", "hh:mm a").format("HH"));
+// $("#hour-12").attr("data-time", dayjs("12:00 pm", "hh:mm a").format("HH"));
+// $("#hour-1").attr("data-time", dayjs("1:00 pm", "h:mm a").format("HH"));
+// $("hour-2").attr("data-time", dayjs("2:00 pm", "h:mm a").format("HH"));
+// $("#hour-3").attr("data-time", dayjs("3:00 pm", "h:mm a").format("HH"));
+// $("#hour-4").attr("data-time", dayjs("4:00 pm", "h:mm a").format("HH"));
+// $("#hour-5").attr("data-time", dayjs("5:00 pm", "h:mm a").format("HH"));
 
-$(document).ready (function () {
-  renderPlans();
-})
+// $(document).ready (function () {
+//   renderTasks();
+// })
 
 //Date and time with seconds counting down
 function displayTime() {
@@ -45,8 +46,6 @@ function displayTime() {
 
 displayTime();
 setInterval(displayTime, 1000);
-
-
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -59,9 +58,6 @@ setInterval(displayTime, 1000);
 // time-block containing the button that was clicked? How might the id be
 // useful when saving the description in local storage?
 
-
-
-
 function assignTask(event) {
   event.preventDefault();
 }
@@ -71,19 +67,20 @@ function assignTask(event) {
 // attribute of each time-block be used to conditionally add or remove the
 // past, present, and future classes? How can Day.js be used to get the
 // current hour in 24-hour time?
-for (var i = 0; i <= 12; i++) {
-  var inputHourInt = $("#" + i + "row").attr("data-time");
+for (var i = 9; i <= 17; i++) {
+  var textArea = $("#hour-" + i);
 
-  if (currentHourInt === inputHourInt) {
-    $("#" + i + "row").addClass("present");
-    if (currentHourInt > inputHourInt) {
-      $("#" + i + "row").addClass("past");
-    }
-    if (currentHourInt < inputHourInt) {
-      $("#" + i + "row").addClass("future");
-    }
+  if (hour === i) {
+    textArea.addClass("present");
+  }
+  if (hour < i) {
+    textArea.addClass("past");
+  }
+  if (hour > i) {
+    textArea.addClass("future");
   }
 }
+
 //
 // TODO: Add code to get any user input that was saved in localStorage and set
 // the values of the corresponding textarea elements. HINT: How can the id
