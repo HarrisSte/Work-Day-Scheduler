@@ -13,6 +13,11 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
+//Add EventListener to the save button to store to local
+saveBtn.addEventListener("click", funtion()) {
+  
+}
+
 //Pull stored data from local storage & render it on the application
 function saveTasksToLocal(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -31,6 +36,7 @@ function readTasksFromLocal() {
   }
   return tasks;
 }
+
 //Data attributes to allow time slots to change color based on past, present, future
 for (var i = 9; i <= 17; i++) {
   var textArea = $("#hour-" + i);
@@ -50,6 +56,10 @@ for (var i = 9; i <= 17; i++) {
 function assignTask(event) {
   event.preventDefault();
 }
+
+
+
+
 
 //INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
