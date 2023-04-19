@@ -3,6 +3,7 @@ var currentDay = $("#currentDay");
 var saveBtn = $(".saveBtn");
 var readTask = $(readTask);
 var hour = dayjs().hour();
+var task = $(".textBlock");
 
 //NOT DONE: Add jQuery according to instructions
 
@@ -17,7 +18,14 @@ setInterval(displayTime, 1000);
 
 //NOT GOOD: Add EventListener to the save button to store to local: ReadTask not defined
 saveBtn.on("click", function () {
-  var taskInput = taskInput;
+  var button = $(this);
+  console.log(saveBtn);
+  var siblings = button.siblings();
+  var textArea = $(siblings[1]);
+  console.log(textArea.data("hour"));
+  var task = textArea.val();
+
+  saveTask(task);
 });
 
 //NOT GOOD: Pull stored data from local storage & render it on the application
@@ -56,9 +64,6 @@ for (var i = 9; i <= 17; i++) {
 // function assignTask(event) {
 //   event.preventDefault();
 // }
-
-
-
 
 //INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
