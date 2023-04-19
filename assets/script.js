@@ -13,14 +13,11 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
-
-
 //Add EventListener to the save button to store to local
-saveBtn.addEventListener("click", funtion()) {
-
-}
-
-
+// saveBtn.addEventListener("click", function() {
+//   var tasks = taskInput.value
+//   saveTasksToLocal(tasks)
+// })
 
 //Pull stored data from local storage & render it on the application
 function saveTasksToLocal(tasks) {
@@ -48,10 +45,10 @@ for (var i = 9; i <= 17; i++) {
   if (hour === i) {
     textArea.addClass("present");
   }
-  if (hour < i) {
+  if (hour > i) {
     textArea.addClass("past");
   }
-  if (hour > i) {
+  if (hour < i) {
     textArea.addClass("future");
   }
 }
@@ -60,10 +57,6 @@ for (var i = 9; i <= 17; i++) {
 function assignTask(event) {
   event.preventDefault();
 }
-
-
-
-
 
 //INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
