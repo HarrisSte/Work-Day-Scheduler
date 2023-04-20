@@ -6,9 +6,12 @@ With this application, users can easily keep track of their daily tasks. The use
 
 This application also has color-coding indicators to indicate where you are in your day. The below color key explains the colors are their meaning:
 
-Grey: The hour has passed.
-Red: Indicates that you are currently within that hour.
-Green: Shows future events that have yet to pass.
+Color         | Meaning
+------------- | -------------
+Grey          | The hour has passed.
+Red           | Currently within that hour.
+Green         | Future hours that have yet to pass.
+
 
 # Link
 
