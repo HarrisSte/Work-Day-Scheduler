@@ -31,7 +31,6 @@ var storageObj = JSON.parse(localStorage.getItem("tasks")) || {};
 //Pull stored data from local storage & render it on the application after refresh
 //Will save user input to specific timeslot where the user types
 function saveTask(task, timeSlot) {
-  console.log(task);
   storageObj[timeSlot] = task;
   localStorage.setItem("tasks", JSON.stringify(storageObj));
 }
@@ -40,7 +39,6 @@ function loadTasks() {
   for (var i = 9; i <= 17; i++) {
     var textArea = $("#hour-" + i);
     var thisTask = storageObj["hour-" + i];
-    console.log("hour-" + i);
     if (thisTask) {
       textArea.val(thisTask);
     }
