@@ -12,12 +12,12 @@ Green: Shows furture events that have yet to pass.
 
 # Link
 
-ADD LINK TO DEPLOYED APPLICATION
+https://harrisste.github.io/Work-Day-Scheduler/
 
 # Screenshot
 
-ADD SCREENSHOT OF DEPLOYED APPLICATION
+![M5Chall](https://user-images.githubusercontent.com/126029841/233492238-aba626f2-7b04-4ee4-a488-6fc3979e6c6a.PNG)
 
 # Contribtions
 
-For this project, I utilized multiple resources to help me build this application from scratch. I worked with my tutor, Ben Martin, to help solve an issue I faced. I also attended office hours and spoke directly to my instructor. In addition to this, I combed through the numerous resources provided by my instructor and TAs in the boot camp aided in supplementing my process of developing this project. I referenced outside sources, such as websites and tutorial videos, through W3Schools, MDN, and StackOverflow. I also conferred with my colleagues, Andrew Zümwalt, when I ran in to an obstacle.
+For this project, I utilized multiple resources to help me devleop this application. I worked with my tutor, Ben Martin, to help solve an issue I faced. I also attended office hours and spoke directly to my instructor. In addition to this, I combed through the numerous resources provided by my instructor and TAs in the boot camp aided in supplementing my process of developing this project. I referenced various outside sources, such as websites and tutorial videos, through W3Schools, MDN, Medium, and StackOverflow. I also conferred with my classmates.
