@@ -16,7 +16,7 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
-//ALL GOOD: Add EventListener to the save button to store to local: ReadTask not defined
+//ALL GOOD: Add EventListener to the save button to store to local
 saveBtn.on("click", function () {
   var button = $(this);
   var siblings = button.siblings();
@@ -27,6 +27,10 @@ saveBtn.on("click", function () {
 });
 
 //NOT GOOD: Pull stored data from local storage & render it on the application
+function saveTask(task) {
+  localStorage.setItem("task", JSON.stringify(task));
+}
+
 function readTask() {
   var task = localStorage.getItem("task");
   if (task) {
@@ -37,11 +41,10 @@ function readTask() {
   return task.textValue;
 }
 
-function saveTask(task) {
-  localStorage.setItem("task", JSON.stringify(task));
+function printTask() {
+  task.empty();
+  var task = readTask();
 }
-
-function printTask() {}
 
 //ALL GOOD: Data attributes to allow time slots to change color based on past, present, future
 for (var i = 9; i <= 17; i++) {
