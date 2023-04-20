@@ -2,13 +2,13 @@
 
 # Description
 
-With this application, you can easily keep track of your daily tasks. Even after you have tpyed in your task you can close your browser and the infomration will reamin on the page.
+With this application, users can easily keep track of their daily tasks. The user inputs their desired text in the textbox next to the hour of the day. The text that the user types will persist even if the application is closed. This way, the user can access their information as it is stored in the local storage of the browser.
 
-This application also has color-coding indicators to let you know where you are in your day. The below key explains the colors are their meaning:
+This application also has color-coding indicators to indicate where you are in your day. The below color key explains the colors are their meaning:
 
 Grey: The hour has passed.
 Red: Indicates that you are currently within that hour.
-Green: Shows furture events that have yet to pass.
+Green: Shows future events that have yet to pass.
 
 # Link
 
@@ -20,4 +20,4 @@ https://harrisste.github.io/Work-Day-Scheduler/
 
 # Contribtions
 
-For this project, I utilized multiple resources to help me devleop this application. I worked with my tutor, Ben Martin, to help solve an issue I faced. I also attended office hours and spoke directly to my instructor. In addition to this, I combed through the numerous resources provided by my instructor and TAs in the boot camp aided in supplementing my process of developing this project. I referenced various outside sources, such as websites and tutorial videos, through W3Schools, MDN, Medium, and StackOverflow. I also conferred with my classmates.
+For this application, I utilized multiple resources to help me develop this application. I worked with my tutor, Ben Martin, to help solve an issue I faced. I also attended office hours and spoke directly to my instructor. In addition, I combed through the numerous resources provided by my instructor and TAs in the boot camp. I referenced outside sources, such as websites and tutorial videos, through W3Schools, MDN, Medium, and StackOverflow. I also conferred with my classmates.
