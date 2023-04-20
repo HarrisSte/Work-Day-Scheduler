@@ -5,8 +5,6 @@ var readTask = $(readTask);
 var hour = dayjs().hour();
 var task = $(".textBlock");
 
-//NOT DONE: Add jQuery according to instructions
-
 //ALL GOOD: Date and time with seconds counting down
 function displayTime() {
   var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
@@ -21,29 +19,34 @@ saveBtn.on("click", function () {
   var button = $(this);
   var siblings = button.siblings();
   var textArea = $(siblings[1]);
-  var task = textArea.val();
+  var task = textArea.val().trim();
+  var timeSlot = textArea.attr("id");
 
-  saveTask(task);
+  saveTask(task, timeSlot);
 });
 
-//NOT GOOD: Pull stored data from local storage & render it on the application
-function saveTask(task) {
-  localStorage.setItem("task", JSON.stringify(task));
+var storageObj = JSON.parse(localStorage.getItem("tasks")) || {};
+//NOT GOOD: Pull stored data from local storage & render it on the application after refresh
+function saveTask(task, timeSlot) {
+  console.log(task);
+  storageObj[timeSlot] = task;
+  localStorage.setItem("tasks", JSON.stringify(storageObj));
 }
 
-function readTask() {
-  var task = localStorage.getItem("task");
-  if (task) {
-    task = JSON.parse(task);
-  } else {
-    task = [];
+function loadTasks() {
+  for (var i = 9; i <= 17; i++) {
+    var textArea = $("#hour-" + i);
+    var thisTask = storageObj["hour-" + i];
+    console.log("hour-" + i);
+    if (thisTask) {
+      textArea.val(thisTask);
+    }
   }
-  return task.textValue;
 }
 
 function printTask() {
-  task.empty();
-  var task = readTask();
+  var task = JSON.parse(localStorage.getItem("task")) || [];
+  task.push(task);
 }
 
 //ALL GOOD: Data attributes to allow time slots to change color based on past, present, future
@@ -61,10 +64,7 @@ for (var i = 9; i <= 17; i++) {
   }
 }
 
-//NOT DONE: Prevent the page from reloading
-// function assignTask(event) {
-//   event.preventDefault();
-// }
+loadTasks();
 
 //INSTRUCTIONS THAT WERE IN THE STARTERCODE:
 
