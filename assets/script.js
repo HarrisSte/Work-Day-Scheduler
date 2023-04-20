@@ -5,7 +5,7 @@ var readTask = $(readTask);
 var hour = dayjs().hour();
 var task = $(".textBlock");
 
-//ALL GOOD: Date and time with seconds counting down
+//Current date and time with seconds counting down at top of application
 function displayTime() {
   var rightNow = dayjs().format("MMMM DD, YYYY [at] hh:mm:ss a");
   currentDay.text(rightNow);
@@ -14,7 +14,8 @@ function displayTime() {
 displayTime();
 setInterval(displayTime, 1000);
 
-//ALL GOOD: Add EventListener to the save button to store to local
+//EventListener to the save button to store to local
+//Saves information to specific timeslot chosen by user
 saveBtn.on("click", function () {
   var button = $(this);
   var siblings = button.siblings();
@@ -26,7 +27,9 @@ saveBtn.on("click", function () {
 });
 
 var storageObj = JSON.parse(localStorage.getItem("tasks")) || {};
-//NOT GOOD: Pull stored data from local storage & render it on the application after refresh
+
+//Pull stored data from local storage & render it on the application after refresh
+//Will save user input to specific timeslot where the user types
 function saveTask(task, timeSlot) {
   console.log(task);
   storageObj[timeSlot] = task;
@@ -44,12 +47,8 @@ function loadTasks() {
   }
 }
 
-function printTask() {
-  var task = JSON.parse(localStorage.getItem("task")) || [];
-  task.push(task);
-}
-
-//ALL GOOD: Data attributes to allow time slots to change color based on past, present, future
+//Data attributes to allow time slots to change color based on the current hour
+//Present: red, past: grey, and future: green
 for (var i = 9; i <= 17; i++) {
   var textArea = $("#hour-" + i);
 
@@ -65,20 +64,3 @@ for (var i = 9; i <= 17; i++) {
 }
 
 loadTasks();
-
-//INSTRUCTIONS THAT WERE IN THE STARTERCODE:
-
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-// TODO: Add a listener for click events on the save button. This code should
-// use the id in the containing time-block as a key to save the user input in
-// local storage. HINT: What does `this` reference in the click listener
-// function? How can DOM traversal be used to get the "hour-x" id of the
-// time-block containing the button that was clicked? How might the id be
-// useful when saving the description in local storage?
-
-// TODO: Add code to get any user input that was saved in localStorage and set
-// the values of the corresponding textarea elements. HINT: How can the id
-// attribute of each time-block be used to do this?
